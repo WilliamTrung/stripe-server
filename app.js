@@ -1,8 +1,8 @@
 var createError = require("http-errors");
 var fs = require("fs");
 const options = {
-  key: fs.readFileSync('../stripe-test/certificates/key.pem'),
-  cert: fs.readFileSync('../stripe-test/certificates/cert.pem')
+  key: fs.readFileSync('./stripe-test/certificates/key.pem'),
+  cert: fs.readFileSync('./stripe-test/certificates/cert.pem')
 }
 
 var express = require("express");
