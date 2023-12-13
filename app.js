@@ -1,16 +1,20 @@
 var createError = require("http-errors");
+var fs = require("fs");
+const options = {
+  key: fs.readFileSync('../stripe-test/certificates/key.pem'),
+  cert: fs.readFileSync('../stripe-test/certificates/cert.pem')
+}
+
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-// var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
-
 const paymentRoutes = require("./routes/paymentRoutes");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+var https = require("https");
 var app = express();
 const PORT = 4000;
 
@@ -51,8 +55,9 @@ app.get("/", (req, res) => {
   res.send("<h2>Hello world </h2>");
 });
 
-app.listen(PORT, () => {
-  console.log("API is listening on port", PORT);
+
+https.createServer(options, app).listen(5000, () => {
+  console.log("API is listening on port");
 });
 
 module.exports = app;
