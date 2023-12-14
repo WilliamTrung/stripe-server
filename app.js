@@ -55,8 +55,8 @@ app.get("/", (req, res) => {
   res.send("<h2>Hello world </h2>");
 });
 
-
-https.createServer(options, app).listen(5000, () => {
+//prev port: 5000
+https.createServer(options, app).listen(4000, () => {
   console.log("API is listening on port");
 });
 
