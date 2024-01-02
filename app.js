@@ -52,7 +52,11 @@ app.use(function (err, req, res, next) {
 });
 
 app.get("/", (req, res) => {
-  res.send("<h2>Hello world </h2>");
+  // res.send("<h2>Hello world </h2>");
+  //https://stackoverflow.com/questions/64867389/refused-to-execute-inline-script-because-it-violates-the-following-content-secur
+  res
+  .set("Content-Security-Policy", "default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'")
+  .send("<html><head></head><body></body></html>");
 });
 
 //prev port: 5000
