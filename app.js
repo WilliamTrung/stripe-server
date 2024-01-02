@@ -1,9 +1,9 @@
 var createError = require("http-errors");
 var fs = require("fs");
-const options = {
-  key: fs.readFileSync('./stripe-test/certificates/key.pem'),
-  cert: fs.readFileSync('./stripe-test/certificates/cert.pem')
-}
+// const options = {
+//   key: fs.readFileSync('./stripe-test/certificates/key.pem'),
+//   cert: fs.readFileSync('./stripe-test/certificates/cert.pem')
+// }
 
 var express = require("express");
 var path = require("path");
@@ -14,7 +14,7 @@ const paymentRoutes = require("./routes/paymentRoutes");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-var https = require("https");
+// var https = require("https");
 var app = express();
 const PORT = 4000;
 
@@ -56,8 +56,11 @@ app.get("/", (req, res) => {
 });
 
 //prev port: 5000
-https.createServer(options, app).listen(4000, () => {
-  console.log("API is listening on port");
+// https.createServer(options, app).listen(4000, () => {
+//   console.log("API is listening on port");
+// });
+const http = require("http");
+http.createServer(app).listen(PORT, () => {
+  console.log(`API is listening on port ${PORT}`);
 });
-
 module.exports = app;
