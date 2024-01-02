@@ -7,8 +7,9 @@ const stripe = require("stripe")(
 // router endpoints
 router.post("/create-checkout", async (req, res) => {
   try {
+    //prev: domain_name: "http://localhost:4000",
     const paymentMethodDomain = await stripe.paymentMethodDomains.create({
-      domain_name: "http://localhost:4000",
+      domain_name: "http://localhost:80",
     });
 
     const createCustomer = await stripe.customers.create({

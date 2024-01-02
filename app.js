@@ -16,7 +16,7 @@ const cors = require("cors");
 
 // var https = require("https");
 var app = express();
-const PORT = 4000;
+const PORT = 80;
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
