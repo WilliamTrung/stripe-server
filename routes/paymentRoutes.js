@@ -38,6 +38,7 @@ router.post("/create-checkout", async (req, res) => {
     switch (error.type) {
       case "StripeCardError":
         console.log(`A payment error occurred: ${error.message}`);
+        res.json({error: `A payment error occurred: ${error.message}`});
         break;
       case "StripeInvalidRequestError":
         console.log("An invalid request occurred.");
@@ -48,6 +49,7 @@ router.post("/create-checkout", async (req, res) => {
         break;
       default:
         console.log("Another problem occurred, maybe unrelated to Stripe.");
+        res.json({error: 'Another problem occurred, maybe unrelated to Stripe.'});
         break;
     }
   }
