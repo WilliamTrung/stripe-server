@@ -42,6 +42,7 @@ router.post("/create-checkout", async (req, res) => {
         console.log("An invalid request occurred.");
         if (error.param) {
           console.log(`The parameter ${error.param} is invalid or missing.`);
+          res.json({ error: `The parameter ${error.param} is invalid or missing.`});
         }
         break;
       default:
