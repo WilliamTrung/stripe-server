@@ -20,8 +20,8 @@ router.post("/create-checkout", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       customer: createCustomer.id,
       setup_future_usage: "off_session",
-      amount: req.query.amount * 100,
-      currency: "usd", // Integer, usd -> pennies, eur -> cents
+      amount: req.query.amount,
+      currency: "vnd", // Integer, usd -> pennies, eur -> cents
       automatic_payment_methods: {
         enabled: true,
       },
